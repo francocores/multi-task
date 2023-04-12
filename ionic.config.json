@@ -1,0 +1,7 @@
+{
+  "name": "multiTaskApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
