@@ -1,0 +1,14 @@
+<div *ngIf="control.invalid && (control.dirty || control.touched) && control.errors">
+  <div *ngIf="control.errors['required']">
+    * Campo obligatorio
+  </div>
+  <div *ngIf="control.errors['minlength']">
+    * Mínimo {{control.errors['minlength'].requiredLength}} caracteres
+  </div>
+  <div *ngIf="control.errors['maxlength']">
+    * Máximo {{control.errors['maxlength'].requiredLength}} caracteres
+  </div>
+  <div *ngIf="control.errors['email'] || control.errors?.['pattern']">
+    * Formato incorrecto
+  </div>
+</div>
