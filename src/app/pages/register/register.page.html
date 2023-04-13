@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Registrar usuario</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-input label="Nombre de usuario" label-placement="floating" fill="outline" [formControl]="userName"
+          placeholder="Introduce un nombre"></ion-input>
+        <app-validator [control]="userName"></app-validator>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="register()">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
