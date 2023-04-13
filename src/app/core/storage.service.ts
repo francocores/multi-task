@@ -19,7 +19,7 @@ export class StorageService {
   }
 
   static async getUser() {
-    return await Preferences.get({ key: 'name' });
+    return await Preferences.get({ key: StorageService.keys.user });
   }
 
   static async existUser() {
