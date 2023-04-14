@@ -1,5 +1,5 @@
 export interface Task {
-  id?: number;
+  key?: string;
   user?: string;
   created_at?: Date;
   description?: string;

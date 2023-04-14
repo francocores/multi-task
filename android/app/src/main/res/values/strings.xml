@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">multiTaskApp</string>
+    <string name="title_activity_main">multiTaskApp</string>
+    <string name="package_name">com.multi.task.app</string>
+    <string name="custom_url_scheme">com.multi.task.app</string>
+</resources>
