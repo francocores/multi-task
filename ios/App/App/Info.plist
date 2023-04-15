@@ -30,6 +30,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+    <key>NSMotionUsageDescription</key>
+    <string>Necesitamos acceder a los permisos de movimiento, para poder ofrecerte une mejor experiencia</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

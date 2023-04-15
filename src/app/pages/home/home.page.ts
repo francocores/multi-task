@@ -9,6 +9,8 @@ import { ValidatorComponent } from 'src/app/shared/validator/validator';
 import { TaskService } from 'src/app/data/task.service';
 import { map } from 'rxjs';
 import { FilterPipe } from 'src/app/utils/filter.pipe';
+import { DeviceMotion } from 'custom-plugins/motion-plugin/src';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -38,6 +40,7 @@ export class HomePage {
     private loading: LoadingService,
     private actionSheetCtrl: ActionSheetController,
     private taskService: TaskService,
+    private alertController: AlertController
   ) {
   }
 
@@ -59,6 +62,39 @@ export class HomePage {
         },
       error: () => this.loading.hide(),
     });
+
+    await DeviceMotion.watchDeviceShake(() => this.deviceIsShaked());
+  }
+
+  private preventDuplication = false;
+  private async deviceIsShaked() {
+    if (this.preventDuplication || !this.tasks.length) return;
+
+    this.preventDuplication = true;
+    const alert = await this.alertController.create({
+      header: 'Eliminar tarea',
+      message: '¿Desea eliminar la ultima tarea?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Si',
+          role: 'confirm',
+          handler: () => {
+            setTimeout(() => {
+              this.deleteTask(this.tasks[0]);
+            }, 350);
+          }
+        }
+      ],
+    });
+
+    await alert.present();
+    alert.onDidDismiss().then(() => this.preventDuplication = false);
   }
 
   filterTasks(task: Task, search: string | null) {
